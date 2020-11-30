@@ -1,0 +1,47 @@
+{
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll": true
+    },
+    "[typescriptreact]": {
+      "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
+    "[javascript]": {
+      "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
+    "[json]": {
+      "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
+    "[jsonc]": {
+      "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
+    "[less]": {
+      "editor.defaultFormatter": "stylelint.vscode-stylelint"
+    },
+    "[scss]": {
+      "editor.codeActionsOnSave": {
+        "source.fixAll.stylelint": false
+      }
+    },
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "editor.formatOnPaste": true,
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false,
+    "eslint.format.enable": true,
+    "eslint.alwaysShowStatus": true,
+    "eslint.lintTask.enable": true,
+    "cSpell.ignorePaths": [
+      "node_modules",
+      "yarn.lock",
+      ".github",
+      ".gitignore",
+      ".vscode",
+      "package.json"
+    ],
+    "cSpell.words": [
+      "Parens",
+      "TESTID",
+      "commitlint"
+    ]
+  }

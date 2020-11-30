@@ -1,0 +1,31 @@
+.wrapper {
+  position: relative;
+  width: 80%;
+  height: 30px;
+  margin: 0 auto;
+
+  @media (min-width: 1024px) {
+    width: 100%;
+  }
+
+  .track {
+    position: relative;
+    height: 8px;
+    margin: (16px - 8px) / 2 0;
+    background-color: #eff3f4; // light-grey
+    border-radius: 8px;
+  }
+
+  // Provide width buffer to avoid handle overlap
+  .inner {
+    position: relative;
+    height: 100%;
+    margin: 0 (16px / 2);
+  }
+
+  .range {
+    position: absolute;
+    height: 100%;
+    background-color: #3f7a25; // color-primary-darkened
+  }
+}

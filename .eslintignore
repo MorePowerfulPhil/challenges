@@ -1,0 +1,4 @@
+*.js
+*.d.ts
+# Temporary disabling of JSX errors
+*.jsx

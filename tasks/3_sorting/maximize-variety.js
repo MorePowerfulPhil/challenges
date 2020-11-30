@@ -1,0 +1,1 @@
+export const maximizeVariety = (prices, budget) => prices

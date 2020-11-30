@@ -1,0 +1,42 @@
+{
+    "compilerOptions": {
+      "strict": true,
+      "noEmit": true,
+      "esModuleInterop": true,
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
+      "skipLibCheck": true,
+      "downlevelIteration": true,
+      "jsx": "react",
+      "target": "es5",
+      "lib": [
+        "dom",
+        "es7",
+        "ESNext"
+      ],
+      "sourceMap": true,
+      "sourceRoot": "/",
+      "module": "commonjs",
+      "removeComments": true,
+      "forceConsistentCasingInFileNames": true,
+      "resolveJsonModule": true,
+      "noUnusedLocals": true,
+      "typeRoots": ["./node_modules/@types/", "./@types/"],
+      "noImplicitReturns": true,
+      "suppressImplicitAnyIndexErrors": true,
+    },
+    "include": [
+      "**/*"
+    ],
+    "exclude": [
+      "node_modules",
+      "!node_modules/@types",
+      "**/*.test.ts",
+      "**/*.test.js",
+      "mocks", 
+      "dist",
+      "build",
+      "coverage"
+    ]
+  }
+  

@@ -1,0 +1,21 @@
+# Environment Variables
+.env
+
+# Node Modules
+node_modules
+
+# Output
+dist
+
+# Coverage
+coverage
+
+# Other
+**/config.yml
+**/.DS_Store
+
+# Yarn
+yarn-error.log
+
+# Webpack Cache
+.awcache

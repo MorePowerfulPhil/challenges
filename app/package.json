@@ -1,0 +1,10 @@
+{
+    "name":"app",
+    "main":"app.jsx",
+    "version": "0.0.1",
+    "private": false,
+    "scripts": {
+        "start": "webpack-dev-server --mode development --progress",
+        "build": "webpack -p"
+    }
+}
