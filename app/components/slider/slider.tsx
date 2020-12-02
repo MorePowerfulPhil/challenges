@@ -114,6 +114,7 @@ export const Slider = (props: SliderProps) => {
           percentage={percentage}
           onDrag={handleNodeDrag}
           type={key}
+          testID={props.testID}
         />
       )
     })

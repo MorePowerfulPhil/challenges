@@ -1,3 +1,5 @@
+$circleSize: 0px;
+
 .slider-node {
   position: absolute;
   top: 50%;
@@ -6,7 +8,7 @@
 
   &__label {
     position: absolute;
-    top: 30px;
+    top: 35px;
     left: 50%;
     font-size: 11px;
     letter-spacing: -0.03em;
@@ -14,9 +16,10 @@
     font-weight: 600;
     color: #000;
     white-space: nowrap;
+    background-color: #fff;
 
     &--left {
-      margin-left: (16px / -2);
+      margin-left: ($circleSize / -2);
     }
 
     &--center {
@@ -24,14 +27,14 @@
     }
 
     &--right {
-      margin-left: (16px / 2);
+      margin-left: ($circleSize / 2);
       transform: translateX(-100%);
     }
   }
 
   &__handle {
-    width: 16px + 20px;
-    height: 16px + 20px;
+    width: $circleSize + 20px;
+    height: $circleSize + 20px;
     padding: 10px;
     cursor: pointer;
 

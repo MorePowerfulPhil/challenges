@@ -1,79 +1,80 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
-
 import './slider-node.scss'
-export class SliderNode extends React.Component {
-  state = {
-    mouseIsDown: false
-  }
 
-  node = React.createRef()
+export const SliderNode = ({ min, max, label, percentage, onDrag, type, testID = "123"}) => {
+  
+  const [ mouseIsDown, setMouseIsDown ] = useState(false)
 
-  componentDidMount() {
-    this.node.current.ownerDocument.addEventListener('mousemove', this.handleMouseMove)
-    this.node.current.ownerDocument.addEventListener('mouseup', this.handleMouseUp)
-    this.node.current.ownerDocument.addEventListener('mousedown', this.handleMouseDown)
+  const sliderRef = useRef(null)
 
-    this.node.current.ownerDocument.addEventListener('touchmove', this.handleMouseMove)
-    this.node.current.ownerDocument.addEventListener('touchend', this.handleMouseUp)
-    this.node.current.ownerDocument.addEventListener('touchstart', this.handleMouseDown)
-  }
+  useEffect( () => {
+    sliderRef.current.ownerDocument.addEventListener('mousemove', handleMouseMove)
+    sliderRef.current.ownerDocument.addEventListener('mouseup', handleMouseUp)
+    sliderRef.current.ownerDocument.addEventListener('mousedown', handleMouseDown) 
+    
+    sliderRef.current.ownerDocument.addEventListener('touchmove', handleMouseMove)
+    sliderRef.current.ownerDocument.addEventListener('touchend', handleMouseUp)
+    sliderRef.current.ownerDocument.addEventListener('touchstart', handleMouseDown)
 
-  componentWillUnmount() {
-    this.node.current.ownerDocument.removeEventListener('mousemove', this.handleMouseMove)
-    this.node.current.ownerDocument.removeEventListener('mouseup', this.handleMouseUp)
-    this.node.current.ownerDocument.removeEventListener('mousedown', this.handleMouseDown)
+    return () => {
+      sliderRef.current.ownerDocument.removeEventListener('mousemove', handleMouseMove)
+      sliderRef.current.ownerDocument.removeEventListener('mouseup', handleMouseUp)
+      sliderRef.current.ownerDocument.removeEventListener('mousedown', handleMouseDown) 
 
-    this.node.current.ownerDocument.removeEventListener('touchmove', this.handleMouseMove)
-    this.node.current.ownerDocument.removeEventListener('touchend', this.handleMouseUp)
-    this.node.current.ownerDocument.removeEventListener('touchstart', this.handleMouseDown)
-  }
+      sliderRef.current.ownerDocument.removeEventListener('touchmove', handleMouseMove)
+      sliderRef.current.ownerDocument.removeEventListener('touchend', handleMouseUp)
+      sliderRef.current.ownerDocument.removeEventListener('touchstart', handleMouseDown)
+    }
+  }, [mouseIsDown])
 
-  handleMouseMove = (event) => {
-    if (!this.state.mouseIsDown) {
+
+  const handleMouseMove = (event) => {
+    if (!mouseIsDown) {
       return
     }
 
-    this.props.onDrag(event, this.props.type)
+    onDrag(event, type)
   }
 
-  handleMouseDown = () => {
-    this.setState({
-      mouseIsDown: true
-    })
+  const handleMouseDown = () => {
+    setMouseIsDown(true)
   }
 
-  handleMouseUp = () => {
-    this.setState({
-      mouseIsDown: false
-    })
+  const handleMouseUp = () => {
+    setMouseIsDown(false)
   }
 
-  getStyle = () => {
-    const percentage = (this.props.percentage || 0) * 100
+  const getStyle = () => {
+    const leftPercent = (percentage || 0) * 100
 
     return {
-      left: `${percentage}%`
+      left: `${leftPercent}%`
     }
   }
 
-  getLabelPosition = () => {
-    const { percentage } = this.props
-
+  const getLabelPosition = () => {
     return percentage <= 0.2 ? 'left' : percentage < 0.8 ? 'center' : 'right'
   }
 
-  render() {
-    const style = this.getStyle()
-    const labelClasses = classNames('slider-node__label', `slider-node__label--${this.getLabelPosition()}`)
+  const style = getStyle()
+  const labelClasses = classNames('slider-node__label', `slider-node__label--${getLabelPosition()}`)
 
-    return (
-      <div className='slider-node' style={style} ref={this.node}>
-        <div className={labelClasses}>
-          {this.props.label}
+  return (
+    <>
+      <div className='slider-node'>
+        <div className='slider-node__label slider-node__label--center'>
+          0 cal
         </div>
-        <div data-testid={`${this.props.testID}.handle`} className={'slider-node__handle'}/>
+        <div className='slider-node__handle' />
       </div>
-    )
-  }
+      <div className='slider-node' style={style} ref={sliderRef} >
+        <div className={labelClasses}>
+          {label}
+        </div>
+        <div data-testid={`${testID}.handle`} className='slider-node__handle'/>
+      </div>
+    </>
+  )
+  
 }

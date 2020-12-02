@@ -6,15 +6,16 @@
  * @param min Minimum allowed value
  * @param max Maximum allowed value
  */
-export const clamp = (value, min, max) => {
+
+export const clamp = (value: number, min: number, max: number) => {
   const trueMin = min < max ? min : max
   const trueMax = max > min ? max : min
 
-  if( value > trueMax ){
+  if (value > trueMax) {
     return trueMax
   }
 
-  if( value < trueMin ){
+  if (value < trueMin) {
     return trueMin
   }
 
